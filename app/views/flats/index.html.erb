@@ -1,7 +1,22 @@
-<ul>
-  <% @flats.each do |flat| %>
-    <li><%= flat.name  %></li>
-    <li><%= flat.address %></li>
-    <li><%= flat.price %></li>
-  <% end %>
-</ul>
+<h1>All our flats(<%= @flats.count %>)</h1>
+<div class="row">
+	<% @flats.each do |flat| %>
+	<div class="col-md-4">
+	  <div class="card mb-4" style="width: 18rem">
+	    <img src="https://picsum.photos/300/200?random=<%=rand(10)%>" class="card-img-top" alt="photo">
+	    <div class="card-body">
+	      <h3 class="card-title"><%= flat.name %></h3>
+	      <p class="card-text"><%= flat.address %></p>
+	      <div class="d-flex justify-content-around">
+	        <div><i class="fas fa-euro-sign"></i> <%= flat.price_per_night %></div>
+	        <div><i class="fa fa-user"></i> <%= flat.number_of_guests %></div>
+	      </div>
+	      <hr>
+	        <div><%= link_to "More info", flats_path, class: "card-link" %></div>
+	    </div>
+	  </div>
+	</div>
+	<% end %>
+</div>
+
+
